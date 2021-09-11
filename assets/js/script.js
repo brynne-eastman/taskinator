@@ -222,19 +222,16 @@ var saveTasks = function() {
 
 var loadTasks = function() {
   var savedTasks = localStorage.getItem("tasks");
-  if (savedTasks === null) {
+  if (!savedTasks) {
+    tasks = [];
     return false;
   }
-  console.log("Save taks found!");
-  //else, load up saved tasks
-
-  //parse into array of objects
   savedTasks = JSON.parse(savedTasks);
 
   //loop through savedTasks array
-  for (var i = 0; savedTasks.length; i++) {
-    //pass each task object into the 'createTaskEl()' function  
-    createTaskEl(savedTasks);
+  for (var i = 0; i < savedTasks.length; i++) {
+    //pass each task object in to the 'createTaskEl' fucntion
+    createTaskEl(savedTasks[i]);
   }
 }
 
